@@ -1,0 +1,99 @@
+{
+    "layer": "bottom",
+    "position": "top",
+
+
+    "modules-left": [
+    	"wlr/workspaces", 
+    ],
+    
+    "modules-center": [
+	"custom/time",
+    	"custom/active",
+	"clock",
+    ],
+    
+    "modules-right": [
+    	"cpu",
+	"memory",
+	"temperature",
+	"pulseaudio",
+	"custom/media",
+	"custom/powermenu"
+
+    ],
+    
+    // Modules configuration
+    "wlr/workspaces": {
+        "format": "{icon}",
+	"on-click": "activate",
+        "format-icons": {
+            "1": "  <span color=\"#fe8019\">1</span>",
+            "2": "  <span color=\"#fe8019\">2</span>",
+            "3": "  <span color=\"#fe8019\">3</span>",
+            "4": "  <span color=\"#fe8019\">4</span>",
+            "5": "  <span color=\"#fe8019\">5</span>",
+            "6": "  <span color=\"#fe8019\">6</span>",
+            "7": "  <span color=\"#fe8019\">7</span>",
+            "8": "  <span color=\"#fe8019\">8</span>",
+            "9": "  <span color=\"#fe8019\">9</span>",
+            "10": "  <span color=\"#fe8019\">10</span>",
+        }
+    },
+
+    "clock": {
+    	"format": "  <span color=\"#458588\">{:%B %d}</span>",
+    },
+
+    "cpu": {
+        "format": "  <span color=\"#d79921\">{usage}%</span>",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "  <span color=\"#98971a\">{}%</span>"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": "{icon}  <span color=\"#fb4934\">{temperatureC}°C</span>",
+        "format-icons": ["", "", ""]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "墳  <span color=\"#8ec07c\">{volume}% - {format_source}</span>",
+        "format-muted": "墳  <span color=\"#8ec07c\">Muted - {format_source}</span>",
+        "format-source": "{volume}%",
+        "format-source-muted": "Muted",
+        "on-click": "pavucontrol"
+    },
+
+    "custom/media": {
+        "format": "  <span color=\"#b8bb26\">{}</span>",
+        "max-length": 30,
+        "exec": "$HOME/.config/waybar/modules/spotify", 
+	"interval": 1,
+    },
+    
+    "custom/active": {
+	"format": "类  <span color=\"#b16286\">{}</span>",
+	"max-length": 30,
+	"exec": "$HOME/.config/waybar/modules/active",
+	"interval": 0.5,
+    },
+
+    "custom/time": {
+	"format": "  <span color=\"#fabd2f\">{}</span>",
+	"max-length": 30,
+	"exec": "date \"+%H : %M\"",
+	"interval": 60,
+    },
+
+    "custom/powermenu": {
+	"format": "⏻ ",
+	"on-click": "( wlogout -m 100 )"
+    }
+}
+

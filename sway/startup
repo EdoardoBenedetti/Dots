@@ -1,0 +1,6 @@
+#!/bin/sh
+
+~/.azotebg &
+sway output HDMI-A-1 mode 1366x768@60Hz pos 0 700 &
+sway output DP-3 mode 1920x1080@75Hz pos 1366 0 &
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &

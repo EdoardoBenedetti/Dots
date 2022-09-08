@@ -1,0 +1,8 @@
+#!/bin/sh
+window=$(hyprctl activewindow | grep class | cut -d ' ' --complement -f1)
+
+if $(printf $window &> /dev/null) ; then
+	printf $window
+else
+	echo "Hyprland"
+fi

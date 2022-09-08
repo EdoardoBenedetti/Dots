@@ -1,0 +1,67 @@
+/* General */
+* {
+  border: none;
+  font-family: BitstreamVeraSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: alpha(#282828 ,0.1);
+  color: @theme_text_color;
+  padding: 10px;
+}
+
+/* Workspaces */
+#workspaces button.active {
+  color: #dedede;
+}
+
+/* Others */
+#clock, #cpu, #pulseaudio, #memory, #workspaces button, #temperature, #custom-media, #custom-active, #custom-time, #custom-powermenu {
+  padding: 4px 5px;
+  margin: 0px 3px;
+  border-radius: 10;
+}
+
+#clock {
+  background: linear-gradient(90deg, #458588 20px, #282828 0, #282828 100%);
+}
+
+#cpu {
+  background: linear-gradient(90deg, #d79921 20px, #282828 0, #282828 100%);
+}
+
+#pulseaudio {
+  background: linear-gradient(90deg, #8ec07c 20px, #282828 0, #282828 100%);
+}
+
+#memory {
+  background: linear-gradient(90deg, #98971a 20px, #282828 0, #282828 100%);
+}
+
+#workspaces button {
+  background: linear-gradient(90deg, #fe8019 20px, #282828 0, #282828 100%);
+}
+
+#temperature {
+  background: linear-gradient(90deg, #fb4934 20px, #282828 0, #282828 100%);
+}
+
+#custom-media {
+  background: linear-gradient(90deg, #b8bb26 20px, #282828 0, #282828 100%);
+}
+
+#custom-active {
+  background: linear-gradient(90deg, #b16286 20px, #282828 0, #282828 100%);
+}
+
+#custom-time {
+  background: linear-gradient(90deg, #fabd2f 20px, #282828 0, #282828 100%);
+}
+
+#custom-powermenu {
+  background: #cc241d;
+  padding: 0px 2px 0px 6px;
+  border-radius: 20
+}

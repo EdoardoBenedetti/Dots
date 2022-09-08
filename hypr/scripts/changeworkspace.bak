@@ -1,0 +1,12 @@
+#!/bin/sh
+j=0
+for i in $(hyprctl -j monitors | jq '.[].id'); do
+	echo "Trying monitor $i:"
+	if $(hyprctl -j monitors | jq '.['$i'].active'); then
+		hyprctl dispatch workspace $1
+		hyprctl dispatch movecurrentworkspacetomonitor $i
+	fi
+done
+
+
+
