@@ -110,4 +110,6 @@ alias q="exit"
 alias H="Hyprland"
 alias S="Sway"
 
+alias sudo="doas"
+
 setopt autocd
