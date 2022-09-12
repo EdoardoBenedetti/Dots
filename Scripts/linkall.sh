@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mkdir $HOME/.config
+mkdir $HOME/Pictures
+
 ln -s -b -S.bak $HOME/.dotfiles/alacritty $HOME/.config/alacritty
 ln -s -b -S.bak $HOME/.dotfiles/hypr $HOME/.config/hypr
 ln -s -b -S.bak $HOME/.dotfiles/newm $HOME/.config/newm
