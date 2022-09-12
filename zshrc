@@ -107,4 +107,7 @@ alias v="nvim"
 
 alias q="exit"
 
+alias H="Hyprland"
+alias S="Sway"
+
 setopt autocd
