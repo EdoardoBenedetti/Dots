@@ -1,0 +1,89 @@
+# See dunst(5) for all configuration options
+
+[global]
+    ### Display ###
+    follow = mouse
+
+
+    ### Geometry ###
+    width = 200
+    height = 72
+
+    origin = top-right
+
+    offset = 22x22
+
+    notification_limit = 5
+
+
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 180
+
+
+    ### General Settings ###
+    indicate_hidden = yes
+    horizontal_padding = 4
+    padding = 4
+    frame_width = 2
+    frame_color = "#d79921"
+    background = "#282828"
+    gap_size = 4
+    sort = yes # Sort messages by urgency.
+
+
+    ### Text ###
+    font = Monospace 8
+    line_height = 0
+    markup = full
+    format = "<b><u><big>%a</big></u>\n%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 20
+    ellipsize = end
+    ignore_newline = false
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+    ### History ###
+    sticky_history = yes
+    history_length = 10
+
+    ### Misc/Advanced ###
+    browser = /usr/bin/xdg-open
+    title = Dunst
+    class = Dunst
+    corner_radius = 8
+    ignore_dbusclose = false
+    force_xwayland = false
+
+    ### mouse
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+
+[urgency_low]
+    timeout = 5
+
+[urgency_normal]
+    timeout = 5
+
+[urgency_critical]
+    frame_color = "#fb4934"
+    timeout = 0

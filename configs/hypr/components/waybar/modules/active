@@ -1,0 +1,15 @@
+#!/bin/sh
+getactivewindow () {
+	window="$(hyprctl activewindow)"
+	
+	if [ "$window" != "Invalid" ] ; then
+		printf "$window\n" | sed -n '8p' | cut -d ' ' --complement -f1
+	else
+		printf "Hyprland\n"
+	fi
+}
+
+while true; do
+	getactivewindow
+	sleep 0.1
+done

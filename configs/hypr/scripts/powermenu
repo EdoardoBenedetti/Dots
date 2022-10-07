@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+op=$( echo -e "  Poweroff\n  Reboot\n  Suspend\n  Lock\n  Logout" | \
+    wofi -i --dmenu -W 200 -H 205 -p 'Power Menu' -n --cache-file /dev/null | \
+    awk '{print tolower($2)}' )
+
+sleep 3 && kill -9 $(pidof wofi)
+
+case $op in 
+        poweroff)
+                ;&
+        reboot)
+                ;&
+        suspend)
+                systemctl $op
+                ;;
+        lock)
+		swaylock
+                ;;
+        logout)
+                hyprctl dispatch exit none
+                ;;
+esac

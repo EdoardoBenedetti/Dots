@@ -1,0 +1,22 @@
+#!/bin/sh
+
+mon=$(hyprctl -j monitors)
+
+for i in $(printf "$mon" | jq '.[].id'); do
+    printf "\nTrying with index: $i\n"
+    if $(printf "$mon" | jq ".[$i].focused"); then
+        printf "ID $i is focused\n"
+        active=$i
+    fi
+    if [[ $(printf "$mon" | jq ".[$i].activeWorkspace.name") == \"$1\" ]]; then
+        printf "ID $i has the workspace\n"
+        wanted=$i
+    fi
+done
+
+if [[ -n $wanted ]]; then
+    echo "Wanted is set as $wanted"
+    hyprctl dispatch swapactiveworkspaces $wanted $active
+else
+    hyprctl dispatch workspace name:$1
+fi

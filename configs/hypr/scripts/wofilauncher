@@ -1,0 +1,10 @@
+#!/bin/sh
+wofi --show drun -I -W 400 -H 400 -n -p 'Launcher' -f
+
+while true; do
+    sleep 3
+    if [[ $(hyprctl activewindow -j | jq ".class") != \"wofi\" ]]; then
+        kill -9 $(pidof wofi)
+        break
+    fi
+done

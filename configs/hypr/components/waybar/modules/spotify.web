@@ -1,0 +1,9 @@
+#!/bin/sh
+
+clients=$(hyprctl clients -j)
+
+for (( i=0; i<$(printf "$clients" | jq '.[].class' | wc -l); i++ )); do
+    if [[ $(printf "$clients" | jq ".[$i].class") == \"chrome-open.spotify.com__-Default\" ]]; then
+        printf "$clients\n" | jq ".[$i].title" | sed -e 's/^"//' -e 's/"$//'
+    fi
+done

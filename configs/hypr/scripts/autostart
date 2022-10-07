@@ -1,0 +1,21 @@
+#!/bin/sh
+
+/usr/bin/dunst -conf $HOME/.config/hypr/components/dunst/dunstrc &
+
+$HOME/.azotebg &
+dropbox &
+
+rm $HOME/.cache/librespot/* &
+librespot -n "Arch Librespot" -b 320 --onevent=/home/edoardo/.config/hypr/scripts/librespot &
+
+startWaybar () {
+    dunstify -a Waybar 'Restarting Waybar...'
+    if pidof waybar; then
+        dunstify -a Waybar 'Waybar is already running.'
+    else
+        /bin/waybar -c .config/hypr/components/waybar/config -s .config/hypr/components/waybar/style.css
+        startWaybar
+    fi
+}
+
+startWaybar &

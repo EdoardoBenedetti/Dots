@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#https://github.com/librespot-org/librespot/wiki/Events
+#DEV librespot required as of Oct. 07 2022
+
+if [[ $PLAYER_EVENT = "track_changed" ]]; then
+    mkdir -p $HOME/.cache/librespot
+
+    np="$ARTISTS - $NAME"
+    printf "$np" > $HOME/.cache/librespot/nowplaying
+
+    icon_uri=$(printf "$COVERS" | tail -n1)
+    wget -qO- $icon_uri > $HOME/.cache/librespot/albumcover
+
+
+elif [[ $PLAYER_EVENT = "playing" ]]; then
+    mv $HOME/.cache/librespot/notplaying $HOME/.cache/librespot/nowplaying
+    
+    dunstify "Now playing:
+$(cat $HOME/.cache/librespot/nowplaying)" --appname Spotify --icon="$HOME/.cache/librespot/albumcover"
+
+
+elif [[ $PLAYER_EVENT = "paused" ]] || [[ $PLAYER_EVENT = "stopped" ]]; then
+    mv $HOME/.cache/librespot/nowplaying $HOME/.cache/librespot/notplaying
+
+fi
