@@ -9,4 +9,6 @@ return require('packer').startup(function(use)
 
   use 'preservim/nerdcommenter'
   use 'preservim/nerdtree'
+
+  use 'alvan/vim-closetag'
 end)

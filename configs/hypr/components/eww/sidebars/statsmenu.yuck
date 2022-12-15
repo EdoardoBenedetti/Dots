@@ -1,0 +1,101 @@
+(defwindow statsBar
+  :monitor 1
+  :geometry (geometry
+    :x "0px"
+    :y "40px"
+    :width "0px"
+    :height "0px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :focusable false
+
+  (box :orientation "v"
+    (revealer :reveal statsvis :transition "slideup"
+      (eventbox :onhoverlost "${eww} update statsvis=false" (statsMenu))
+    )
+  )
+)
+
+; ------------------------------------------------------------------------------
+
+(defwidget statsMenu []
+  (box :class "container-right" :space-evenly false
+    (box :orientation "v"
+      (box :class "pill" :space-evenly false :orientation "v" 
+        "⠀CPU Temperature"
+        (overlay
+          (box :class "graph-container"
+            (graph
+              :class "graph"
+              :value "${EWW_TEMPS.K10TEMP_TCTL}"
+              :thickness 1
+              :time-range "30s"
+              :min 0
+              :max 100
+              :width 200
+              :height 60
+            )
+          )
+          "${round(EWW_TEMPS.K10TEMP_TCTL,1)}°C"
+        )
+      )
+      (box :class "pill" :space-evenly false :orientation "v"
+        "⠀GPU Temperature"
+        (overlay
+          (box :class "graph-container"
+            (graph
+              :class "graph"
+              :value "${EWW_TEMPS.AMDGPU_EDGE}"
+              :thickness 1
+              :time-range "30s"
+              :min 0
+              :max 100
+              :width 200
+              :height 60
+            )
+          )
+          "${EWW_TEMPS.AMDGPU_EDGE}°C"
+        )
+      )
+    )
+    (box :orientation "v"
+      (box :class "pill" :space-evenly false :orientation "v"
+        "⠀CPU Usage"
+        (overlay
+          (box :class "graph-container"
+            (graph
+              :class "graph"
+              :value "${EWW_CPU.avg}"
+              :thickness 1
+              :time-range "30s"
+              :min 0
+              :max 100
+              :width 200
+              :height 60
+            )
+          )
+          "${round(EWW_CPU.avg, 2)}%"
+        )
+      )
+      (box :class "pill" :space-evenly false :orientation "v"
+        "⠀RAM Usage"
+        (overlay
+          (box :class "graph-container"
+            (graph
+              :class "graph"
+              :value "${100 / EWW_RAM.total_mem * EWW_RAM.used_mem}"
+              :thickness 1
+              :time-range "30s"
+              :min 0
+              :max 100
+              :width 200
+              :height 60
+            )
+          )
+          "${round(EWW_RAM.used_mem/1000000000, 2)} of ${round(EWW_RAM.total_mem/1000000000, 2)} (${round(100 / EWW_RAM.total_mem * EWW_RAM.used_mem, 2)}%)"
+        )
+      )
+    )
+  )
+)

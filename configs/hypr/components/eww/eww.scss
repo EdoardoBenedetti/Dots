@@ -1,0 +1,64 @@
+* {
+  background-color: rgba(0,0,0,0);
+}
+
+.container-left, .container-center, .container-right {
+  background-color: rgba(69,133,136,0.7);
+  padding: 0px 4px 0px 4px;
+}
+.container-left {border-radius: 0px 10px 10px 0px;}
+.container-center {border-radius: 10px;}
+.container-right {border-radius: 10px 0px 0px 10px;}
+
+.linecontainer {padding-top: 16px; padding-bottom: 17px;}
+.line {background-color: #FFFFFF;}
+
+.general {
+  margin: 2px;
+}
+
+.pill {
+  background-color: #282828;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 2px;
+}
+
+.downon {color: #d65d0e;}
+.downoff {color: rgba(0,0,0,0.5);}
+.upon {color: #689d6a;}
+.upoff {color: rgba(0,0,0,0.5);}
+
+.dot {
+  /*color: rgba(0,0,0,0);*/
+}
+
+.activewindow {color: #b16286;}
+.activeworkspace {
+  background-color: #282828;
+  border-radius: 10px;
+  color: #fe8019;
+}
+
+.date {color: #b16286;}
+.time {color: #fabd2f;}
+
+.cpu-temp {color: #fb4934;}
+.cpu-usage {color: #d79921;}
+.mem-usage {color: #98971a;}
+.audio {color: #8ec07c;}
+.power {color: #fb4934;}
+
+.pbutton {color: #fb4934;}
+.rbutton {color: #d79921;}
+.sbutton {color: #98971a;}
+.lbutton {color: #b16286;}
+.ebutton {color: #fe8019;}
+
+.volout {color: #8ec07c;}
+.volin {color: #d79921;}
+
+.graph-container {background-color: #504945;
+  border-radius: 3px;
+}
+.graph {background-color: #689d6a; color: #d65d0e}

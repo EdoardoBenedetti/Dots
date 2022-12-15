@@ -1,0 +1,51 @@
+(defwindow volumeBar
+  :monitor 1
+  :geometry (geometry
+    :x "0px"
+    :y "40px"
+    :width "0px"
+    :height "0px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :focusable false
+
+  (box :orientation "v"
+    (revealer :reveal volvis :transition "slideup"
+      (eventbox :onhoverlost "${eww} update volvis=false" (volumeMenu))
+    )
+  )
+)
+
+; ------------------------------------------------------------------------------
+
+(defwidget volumeMenu []
+  (box :class "container-right"
+    (pill 
+      (box :orientation "v" :space-evenly false :class "volout"
+        (scale 
+          :orientation "v" 
+          :min 0 :max 101 
+          :value volume 
+          :height 100 
+          :flipped true
+          :onchange "pamixer --set-volume {}"
+        )
+        "${volume}"
+        "墳"
+      )
+      (box :orientation "v" :space-evenly false :class "volin"
+        (scale 
+          :orientation "v" 
+          :min 0 :max 21
+          :value volin 
+          :height 100 
+          :flipped true
+          :onchange "pamixer --default-source --set-volume {}"
+        )
+        "${volin}"
+        ""
+      )
+    )
+  )
+)

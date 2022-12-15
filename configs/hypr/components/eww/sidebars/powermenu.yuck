@@ -1,0 +1,55 @@
+(defwindow powerBar
+  :monitor 1
+  :geometry (geometry
+    :x "0px"
+    :y "40px"
+    :width "0px"
+    :height "0px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :focusable false
+
+  (box :orientation "v"
+    (revealer :reveal powervis :transition "slideup"
+      (eventbox :onhoverlost "${eww} update powervis=false" (powerMenu))
+    )
+  )
+)
+
+; ------------------------------------------------------------------------------
+
+(defwidget powerMenu []
+  (box :orientation "v" :class "container-right"
+    (box :class "pill"
+      (eventbox :class "pbutton" :onclick "poweroff" (box :orientation "v"
+        "" "PowOff"
+        )
+      )
+    )
+    (box :class "pill"
+      (eventbox :class "rbutton" :onclick "reboot" (box :orientation "v"
+        "" "Reboot"
+        )
+      )
+    )
+    (box :class "pill"
+      (eventbox :class "sbutton" :onclick "dunstify 'Not yet configured'" (box :orientation "v"
+        "鈴" "Sleep"
+        )
+      )
+    )
+    (box :class "pill"
+      (eventbox :class "lbutton" :onclick "dunstify 'Not yet configured'" (box :orientation "v"
+        "" "Lock"
+        )
+      )
+    )
+    (box :class "pill"
+      (eventbox :class "ebutton" :onclick "dunstify 'Not yet configured'" (box :orientation "v"
+        "" "LogOut"
+        )
+      )
+    )
+  )
+)

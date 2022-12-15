@@ -11,9 +11,11 @@ vim.opt.wrap = false			-- Do not wrap lines
 vim.opt.ignorecase = true		-- Ignore case during search
 vim.opt.smartcase = true		-- Ighore only if lowercase
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.g.closetag_filenames = '*.xml,*.html,*.js'

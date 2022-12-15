@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/usr/bin/dunst -conf $HOME/.config/hypr/components/dunst/dunstrc &
+killall dunst; dunst -conf $HOME/.config/hypr/components/dunst/dunstrc &
 
 $HOME/.azotebg &
 dropbox &
@@ -8,14 +8,26 @@ dropbox &
 rm $HOME/.cache/librespot/* &
 librespot -n "Arch Librespot" -b 320 --onevent=/home/edoardo/.config/hypr/scripts/librespot &
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+startEww () {
+  /bin/eww -c .config/hypr/components/eww open topBar1
+  /bin/eww -c .config/hypr/components/eww open topBar2
+  /bin/eww -c .config/hypr/components/eww open powerBar
+  /bin/eww -c .config/hypr/components/eww open volumeBar
+  /bin/eww -c .config/hypr/components/eww open statsBar
+  /bin/eww -c .config/hypr/components/eww open calendarBar
+}
+
+startEww &
+
 startWaybar () {
-    dunstify -a Waybar 'Restarting Waybar...'
     if pidof waybar; then
         dunstify -a Waybar 'Waybar is already running.'
     else
         /bin/waybar -c .config/hypr/components/waybar/config -s .config/hypr/components/waybar/style.css
+        dunstify -a Waybar 'Restarting Waybar...'
         startWaybar
     fi
 }
-
-startWaybar &
+#startWaybar &

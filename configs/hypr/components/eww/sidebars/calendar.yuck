@@ -1,0 +1,28 @@
+(defwindow calendarBar
+  :monitor 1
+  :geometry (geometry
+    :x "0px"
+    :y "40px"
+    :width "0px"
+    :height "0px"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :focusable false
+
+  (box :orientation "v"
+    (revealer :reveal calvis :transition "slideup"
+      (eventbox :onhoverlost "${eww} update calvis=false" (calendarMenu))
+    )
+  )
+)
+
+; ------------------------------------------------------------------------------
+
+(defwidget calendarMenu []
+  (box :class "container-center"
+    (pill 
+      (calendar)
+    )
+  )
+)

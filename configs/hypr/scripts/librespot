@@ -16,8 +16,7 @@ if [[ $PLAYER_EVENT = "track_changed" ]]; then
 elif [[ $PLAYER_EVENT = "playing" ]]; then
     mv $HOME/.cache/librespot/notplaying $HOME/.cache/librespot/nowplaying
     
-    dunstify "Now playing:
-$(cat $HOME/.cache/librespot/nowplaying)" --appname Spotify --icon="$HOME/.cache/librespot/albumcover"
+    dunstify "Now playing:" "$(cat $HOME/.cache/librespot/nowplaying)" --appname Spotify --icon="$HOME/.cache/librespot/albumcover"
 
 
 elif [[ $PLAYER_EVENT = "paused" ]] || [[ $PLAYER_EVENT = "stopped" ]]; then
